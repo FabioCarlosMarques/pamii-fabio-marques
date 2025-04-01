@@ -1,2 +1,2 @@
-# pamii-fabio-marques
-Aulas de programação mobile 2 com o professor João Siles
+# pamii-luana-valadares
+Aulas de Programação Mobile || com o Professor João Siles

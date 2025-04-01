@@ -1,42 +1,57 @@
-
+import { async } from '@firebase/util';
 import firebase from 'firebase/compat/app';
-import 'firebase/compat/firestone'
+import 'firebase/compat/firestore';
 
+// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAx-GcBlSDKiYPfjANc8lYdb00Es8iCEOE",
-  authDomain: "meu-primeiro-firebase-8d8b1.firebaseapp.com",
-  projectId: "meu-primeiro-firebase-8d8b1",
-  storageBucket: "meu-primeiro-firebase-8d8b1.firebasestorage.app",
-  messagingSenderId: "559428984424",
-  appId: "1:559428984424:web:48f6c866431f00dde0a5dd"
+  apiKey: "AIzaSyD9kdFYQEnBherfy4YIg37OKXcEO7dFQ4s",
+  authDomain: "meu-primeiro-firebase-c8e45.firebaseapp.com",
+  projectId: "meu-primeiro-firebase-c8e45",
+  storageBucket: "meu-primeiro-firebase-c8e45.firebasestorage.app",
+  messagingSenderId: "381636714535",
+  appId: "1:381636714535:web:99b735d312f25e674a2e02"
 };
 
- firebase.initializeApp(firebaseConfig);
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 
- import React, { useEffect, useState} from 'react';
- import { View, Text, Flatlist } from 'react-native';
+import React, { useEffect, useState} from 'react';
+import { View, Text, FlatList } from 'react-native';
 
- export default function App() {
-  const [nomes, setNomes] = useState([]);
+export default function App() {
+    const [nomes, setNomes] = useState([]);
 
-  useEffect(() =>{
-    const fetchData = async () => {
-      const nomesCollection = firebase.firestone().collection('Nomes');
-      const snapsshot = await nomesCollection.get();
+    useEffect(() => {
+      const fetchData = async () => {
+        const nomesCollection = firebase.firestore().collection('Nomes');
+        const snapshot = await nomesCollection.get();
 
-      const fetchData = async ()=> {;
+        const data = [];
         snapshot.forEach((doc) => {
           data.push({ id: doc.id, ...doc.data()});
+        });
 
-      })
-
-      setNomes(data);
-      
+        setNomes(data);
       };
 
       fetchData();
 
-      
-    
-    
- }
+    },[]);
+
+    return {
+      <View style={{ flex: 1, 
+          justifyContent: 'center',
+          alignItems: 'center'}}>
+      <Text> Lista de Nomes:</Text>
+      <FlatList
+        data={nomes}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item })} => (
+          <View>
+            <Text>{item.Nome} {ClipboardItem.Sobrenome}</Text>
+          </View>
+        )
+
+    }
+
+}
