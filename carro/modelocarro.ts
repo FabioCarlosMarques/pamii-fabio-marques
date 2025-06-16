@@ -10,7 +10,7 @@ class SUV implements Carro {
 
 class Esportivo implements Carro {
     dirigir() {
-        console.log('Dirigindo Esportivo');
+        console.log('Dirigindo um Esportivo');
     }
 }
 
