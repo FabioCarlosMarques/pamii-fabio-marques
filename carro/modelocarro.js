@@ -42,5 +42,5 @@ var Montadora = /** @class */ (function () {
     return Montadora;
 }());
 // Uso
-var meuCarro = Montadora.fabricarCarro('Esportivo');
+var meuCarro = Montadora.fabricarCarro('');
 meuCarro.dirigir();

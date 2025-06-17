@@ -35,7 +35,7 @@ class Montadora {
 }
 
 // Uso
-const meuCarro = Montadora.fabricarCarro('Esportivo');
+const meuCarro = Montadora.fabricarCarro('SUV');
 meuCarro.dirigir();
         
         
