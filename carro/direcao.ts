@@ -2,9 +2,9 @@ interface ModoDeDirecao {
     dirigir(): void;
 }
 
-class Esportivo implements ModoDesDirecao {
+class Esportivo implements ModoDeDirecao {
     dirigir() {
-        console.log('Modo Esportivo: Potência máxima');
+        console.log('Modo Esportivo: Potência máxima!');
     }
 }
 
@@ -21,5 +21,24 @@ class offRoad implements ModoDeDirecao {
 }
 
 class Carro {
-    construtor()
+    constructor(private modo: ModoDeDirecao) {}
+
+    setModo(modo: ModoDeDirecao) {
+      this.modo = modo;
+    }
+
+    dirigir() {
+        this.modo.dirigir();
+    }
 }
+
+// Uso
+const meuCarro = new Carro(new Esportivo());
+meuCarro.dirigir();
+
+meuCarro.setModo(new Economico());
+meuCarro.dirigir();
+
+meuCarro.setModo(new offRoad());
+meuCarro.dirigir();
+
